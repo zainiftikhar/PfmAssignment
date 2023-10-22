@@ -23,5 +23,15 @@ namespace PfmAssignment.Controllers
 
             return Ok(result);
         }
+
+        [HttpGet("daily")]
+        public IActionResult GetDailyData([FromQuery] DateTime dateTime)
+        {
+            var result = _pfmLogic.GetPfmData().
+                Where(x => x.DateFrom.Date == dateTime.Date)
+                .Sum(x => x.Count);
+
+            return Ok(result);
+        }
     }
 }
