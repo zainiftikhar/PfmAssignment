@@ -17,9 +17,26 @@ namespace PfmAssignment.ApiLogic
             }
         }
 
-        public List<PfmData> GetPfmData()
+        public int GetHourlyPfm(DateTime timestamp)
         {
-            return _pfmData;
+            return _pfmData
+                .Where(x => x.DateFrom.Hour == timestamp.Hour && x.DateFrom.Date == timestamp.Date)
+                .Sum(x => x.Count);
         }
+
+        public int GetDailyPfm(DateTime timestamp)
+        {
+            return _pfmData
+                .Where(x => x.DateFrom.Date == timestamp.Date)
+                .Sum(x => x.Count);
+        }
+
+        public int GetWeeklyPfm(DateTime timestamp)
+        {
+            return _pfmData
+                .Where(x => x.DateFrom.Date >= timestamp.Date.AddDays(-7) && x.DateFrom.Date <= timestamp.Date)
+                .Sum(x => x.Count);
+        }
+
     }
 }

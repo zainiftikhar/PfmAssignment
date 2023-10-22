@@ -17,9 +17,7 @@ namespace PfmAssignment.Controllers
         [HttpGet("hourly")]
         public IActionResult GetHourlyData([FromQuery] DateTime dateTime)
         {
-            var result = _pfmLogic.GetPfmData().
-                Where(x => x.DateFrom.Hour == dateTime.Hour && x.DateFrom.Date == dateTime.Date)
-                .Sum(x => x.Count);
+            var result = _pfmLogic.GetHourlyPfm(dateTime);
 
             return Ok(result);
         }
@@ -27,9 +25,7 @@ namespace PfmAssignment.Controllers
         [HttpGet("daily")]
         public IActionResult GetDailyData([FromQuery] DateTime dateTime)
         {
-            var result = _pfmLogic.GetPfmData().
-                Where(x => x.DateFrom.Date == dateTime.Date)
-                .Sum(x => x.Count);
+            var result = _pfmLogic.GetDailyPfm(dateTime);
 
             return Ok(result);
         }
@@ -37,9 +33,7 @@ namespace PfmAssignment.Controllers
         [HttpGet("weekly")]
         public IActionResult GetWeeklyData([FromQuery] DateTime dateTime)
         {
-            var result = _pfmLogic.GetPfmData().
-                Where(x => x.DateFrom.Date >= dateTime.Date.AddDays(-7) && x.DateFrom.Date <= dateTime.Date)
-                .Sum(x => x.Count);
+            var result = _pfmLogic.GetWeeklyPfm(dateTime);
 
             return Ok(result);
         }
