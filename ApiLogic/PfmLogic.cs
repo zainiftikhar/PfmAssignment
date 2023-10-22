@@ -13,8 +13,13 @@ namespace PfmAssignment.ApiLogic
             using (var reader = new StreamReader("Data/counts.csv"))
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
-                _pfmData = new List<PfmData>();
+                _pfmData = csv.GetRecords<PfmData>().ToList();
             }
+        }
+
+        public List<PfmData> GetPfmData()
+        {
+            return _pfmData;
         }
     }
 }
