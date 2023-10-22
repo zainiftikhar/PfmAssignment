@@ -5,9 +5,7 @@ This ASP.NET Core API provides access to footfall data in hourly, daily, and wee
 ## Setup and Run
 
 1.  **Clone the Repository:**
-    
-    bashCopy code
-    
+   
     `git clone <https://github.com/zainiftikhar/PfmAssignment.git>
     cd PfmAssignment` 
     
@@ -17,19 +15,13 @@ This ASP.NET Core API provides access to footfall data in hourly, daily, and wee
     -   [Visual Studio](https://visualstudio.microsoft.com) (or any preferred code editor)
 3.  **Restore Dependencies:**
     
-    bashCopy code
-    
     `dotnet restore` 
     
 4.  **Add CsvHelper:** CsvHelper is used for reading and processing data from the CSV file.
     
-    bashCopy code
-    
     `dotnet add package CsvHelper` 
     
 5.  **Run the API:**
-    
-    bashCopy code
     
     `dotnet run` 
     
@@ -49,8 +41,6 @@ Retrieve hourly footfall data for a specific date and hour.
 
 **Example Request:**
 
-httpCopy code
-
 `GET /api/pfm/hourly?dateTime=2023-10-22T15:00:00` 
 
 ### Daily Data
@@ -59,8 +49,6 @@ Retrieve daily footfall data for a specific date.
 
 **Example Request:**
 
-httpCopy code
-
 `GET /api/pfm/daily?dateTime=2023-10-22` 
 
 ### Weekly Data
@@ -68,8 +56,6 @@ httpCopy code
 Retrieve weekly footfall data for a specific week and year.
 
 **Example Request:**
-
-httpCopy code
 
 `GET /api/pfm/weekly?weekNumber=42&year=2023` 
 
