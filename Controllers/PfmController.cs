@@ -31,9 +31,9 @@ namespace PfmAssignment.Controllers
         }
 
         [HttpGet("weekly")]
-        public IActionResult GetWeeklyData([FromQuery] DateTime dateTime)
+        public IActionResult GetWeeklyData([FromQuery] int weekNumber, [FromQuery] int year)
         {
-            var result = _pfmLogic.GetWeeklyPfm(dateTime);
+            var result = _pfmLogic.GetWeeklyPfm(weekNumber, year);
 
             return Ok(result);
         }
