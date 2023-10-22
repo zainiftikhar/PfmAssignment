@@ -14,6 +14,11 @@ namespace PfmAssignment.Controllers
             _pfmLogic = new PfmLogic();
         }
 
+        /// <summary>
+        /// Retrieves the total Pfm count for a specific hour and date.
+        /// </summary>
+        /// <param name="dateTime">The dateTime indicating the specific hour and date.</param>
+        /// <returns>The total Pfm count for the specified hour and date.</returns>
         [HttpGet("hourly")]
         public IActionResult GetHourlyData([FromQuery] DateTime dateTime)
         {
@@ -22,14 +27,25 @@ namespace PfmAssignment.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Retrieves the total Pfm count for a specific date.
+        /// </summary>
+        /// <param name="date">The date indicating the specific date.</param>
+        /// <returns>The total Pfm count for the specified date.</returns>
         [HttpGet("daily")]
-        public IActionResult GetDailyData([FromQuery] DateTime dateTime)
+        public IActionResult GetDailyData([FromQuery] DateTime date)
         {
-            var result = _pfmLogic.GetDailyPfm(dateTime);
+            var result = _pfmLogic.GetDailyPfm(date);
 
             return Ok(result);
         }
 
+        /// <summary>
+        /// Retrieves the total Pfm count for a specific week of a year.
+        /// </summary>
+        /// <param name="weekNumber">The weekNumber indicating the week number if the year</param>
+        /// <param name="year">The year indicating the year</param>
+        /// <returns>The total Pfm count for the specified week of the year.</returns>
         [HttpGet("weekly")]
         public IActionResult GetWeeklyData([FromQuery] int weekNumber, [FromQuery] int year)
         {
